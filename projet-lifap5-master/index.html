@@ -1,0 +1,242 @@
+<html>
+  <head>
+    <title>Duels de citations</title>
+    <link rel="stylesheet" href="bulma.min.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+<body background="https://i0.wp.com/www.corekap.com/wpckp/wp-content/uploads/2017/03/Font-dEcran-Bleu-Clair.jpg?ssl=1"; background-repeat: no-repeat; >
+      
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            
+            <a id="btn-open-login-modal" class="button is-light" onclick="request()">
+              Se connecter
+            </a>
+            <a class="button is-light" onclick="reset()">
+              Se déconnecter
+            </a>
+            <a id="button is-light" class="button is-light" onclick="get_tab_modif()">
+              Bouton de test
+            </a>
+            <p> Vous êtes connecté en tant que :</p>
+          
+            <form name="log">
+            <div class="control">
+              <input name="champ_log" class="input" type="text" placeholder="Attente de connexion" id="login" disabled>
+            </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </nav>
+  
+    <section class="hero is-warning">
+      <div class="hero-body">
+        <center>
+        <h1 class="title">Duels de citations</h1>
+        <p class="subtitle">Quelle est votre citation favorite ?</p>
+      </center>
+      </div>
+    </section>
+    <section class="section">
+      <div class="tabs is-centered">
+        <ul>
+          <li class="is-active" id="tab-duel">
+            <a>Voter</a>
+          </li>
+          <li id="tab-tout">
+            <a>Toutes les citations</a>
+          </li>
+          <li id="tab-Remplir" >
+            <a>Poster un formulaire</a>
+          </li>
+          <li id="tab-modif">
+            <a> Modifier un formulaire </a>
+          </li>
+        </ul>
+      </div>
+      
+      <form name="principal">
+        <input name="champ" type="hidden" id="recup_api">
+        </form>
+      
+        <form name="voteg">
+          <input name="champ" type="hidden" id="recup_gauche">
+          </form>
+          <form name="voted">
+            <input name="champ" type="hidden" id="recup_droite">
+            </form>
+     
+      <div class="columns" id="div-duel">
+        <div class="column" >
+          <div class="card">
+            <div class="columns card-content" id="gauche">
+              <div class="column is-one-third">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="https://bx1.be/wp-content/uploads/2019/09/Logo-Versus_PropositionWeb.png";
+                    />
+                  </figure>
+                </div>
+              </div>
+              <div class="column is-8">
+                <p class="title"> Connectez vous pour démarrer le Duel :)</p>
+                <p class="subtitle">by Admin</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="columns is-centered">
+                <p class="button is-danger" onclick="submit_gauche()">
+                  Voter pour la citation de gauche !
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column" >
+          <div class="card">
+            <div class="columns card-content" id="droite">
+              <div class="column is-8">
+                <p class="title">
+                  Connectez vous pour démarrer le Duel :)
+                </p>
+                <p class="subtitle">by Admin</p>
+              </div>
+              <div class="column is-one-third">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="https://bx1.be/wp-content/uploads/2019/09/Logo-Versus_PropositionWeb.png"
+                      style="transform: scaleX(-1)"
+                    />
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="columns is-centered">
+                <p class="button is-info" onclick="submit_droite()">Voter pour la citation de droite !</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="div-tout">
+        <table class="table table is-bordered is-striped is-narrow is-hoverable is-fullwidth" id="tableau">
+            <tr>
+              <th><abbr title="Position">Personnage</abbr></th>
+              <th><abbr title="Played"> Citation </abbr></th>
+              <th><abbr title="Won"> Classement (ID provisoire) </abbr></th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="div-modif" name="body-mod">
+      <div class="column">
+      <table class="table table is-bordered is-striped is-narrow is-hoverable " id="tableau-modif">
+          <tr>
+            <th><abbr title="Position">ID de votre formulaire</abbr></th>
+            <th><abbr title="Played"> Citation correspondante </abbr></th>
+          </tr>
+      </table>
+      </div>
+      <article class="panel is-success" >
+      <p class="panel-heading">
+        Remplacer le formulaire
+      </p>
+      ID du formulaire
+      <div class="control">
+        <input class="input is-hovered" size="100px" type="text" placeholder="Placer l'id" id="input-mid">
+      </div>
+      Citation
+      <div class="control">
+        <input class="input is-hovered" size="100px" type="text" placeholder="Placer la citation" id="input-mcitation">
+      </div>
+      personnage
+      <div class="control">
+        <input class="input is-hovered" type="text" placeholder=" personnage " id="input-mpersonnage">
+      </div>
+      Lien
+      <div class="control">
+        <input class="input is-hovered" type="text" placeholder=" insérer votre lien " id="input-mlien">
+      </div>
+      Direction du personnage
+      <div class="control">
+        <input class="input is-hovered" type="text" placeholder="direction du personnage" id="input-mdirection">
+      </div>
+      Origine
+      <div class="control">
+        <input class="input is-hovered" type="text" placeholder="origin " id="input-morigin">
+      </div>     
+    </br>
+      <button class="button is-link " id="btn-valide-saisie" onclick="submit_modif()" >Valider</button>
+    </br>
+    </article>
+    </div>
+ </div>
+    </section>
+
+    <div id="div-Remplir">
+      <article class="panel is-link" >
+        
+        <p class="panel-heading">
+          Remplir le formulaire
+        </p>
+        Citation
+        <div class="control">
+          <input class="input is-hovered" size="100px" type="text" placeholder="Placer la citation" id="input-citation">
+        </div>
+        personnage
+        <div class="control">
+          <input class="input is-hovered" type="text" placeholder=" Personnage " id="input-personnage">
+        </div>
+        Lien
+        <div class="control">
+          <input class="input is-hovered" type="text" placeholder=" Insérer votre lien " id="input-lien">
+        </div>
+        Direction du personnage
+        <div class="control">
+          <input class="input is-hovered" type="text" placeholder="Direction du personnage" id="input-direction">
+        </div>
+        Origine
+        <div class="control">
+          <input class="input is-hovered" type="text" placeholder="Origine " id="input-origin">
+        </div>
+      </br>
+        <button class="button is-link " id="btn-valide-saisie" onclick="submit()" >Valider</button>  
+      </br>
+      </article>
+      </div>
+
+    <div id="mdl-login" class="modal is-active">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Utilisateur</p>
+          <button
+            id="btn-close-login-modal1"
+            class="delete"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <p id="elt-affichage-login" >
+            <input class="input is-link" type="password" placeholder="Saisir la clé Api" id="champ">
+            <button class="button is-link " id="btn-valide-saisie" onclick="request()">Valider</button>
+          </p>
+        </section>
+        <footer class="modal-card-foot" style="justify-content: flex-end">
+          <button id="btn-close-login-modal2" class="button" >Fermer</button>
+          <button id="btn-close-login-modal2" class="button" onclick="history.go(0)">Reset</button>
+        </footer>
+      </div>
+    </div>
+  
+    <script src="client.js"></script>
+  </body>
+</html>
