@@ -2,7 +2,7 @@
 // Constantes de configuration
 
 // Clé Yanis REZAOUI : bdc8e0f8-e51a-4c64-8993-fb1df69ca583
-// Clé Ilyess HAMANI : d56a131e-a6e4-4a7a-96c3-c12c0252fbd7
+
 
 const apiKey = "bdc8e0f8-e51a-4c64-8993-fb1df69ca583";
 const serverUrl = "https://lifap5.univ-lyon1.fr";
